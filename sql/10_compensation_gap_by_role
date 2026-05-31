@@ -1,4 +1,4 @@
--- Q: Which job roles have the most employees earning below their department average who still left?
+-- Q: Which job roles have the most employees earning below their department average who left?
 -- Finding: In R&D, Laboratory Technicians (62) and Research Scientists (47) account for the bulk of below-average earners who left, despite the dept average being $6,281.
 -- Their avg incomes at departure were $2,919 and $2,780 respectively — less than half the department average. 
 -- In Sales, Representatives (33) and Executives (31) show a similar pattern, with Representatives averaging only $2,365 against a dept avg of $6,959.
