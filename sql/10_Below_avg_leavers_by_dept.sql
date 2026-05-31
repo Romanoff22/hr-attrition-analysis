@@ -1,0 +1,24 @@
+-- Q: Which job roles have the most employees earning below their department average who still left?
+-- Finding: In R&D, Laboratory Technicians (62) and Research Scientists (47) account for the bulk of below-average earners who left, despite the dept average being $6,281.
+-- Their avg incomes at departure were $2,919 and $2,780 respectively — less than half the department average. 
+-- In Sales, Representatives (33) and Executives (31) show a similar pattern, with Representatives averaging only $2,365 against a dept avg of $6,959.
+-- HR had 10 such leavers, all in the HR role, averaging $2,416 against a dept avg of $6,655.
+-- Takeaway: Compensation gap is a consistent attrition driver across all departments.          
+
+SELECT 
+    e.Department,
+    e.JobRole,
+    COUNT(*) AS below_avg_leavers,
+    ROUND(AVG(dept_avg.avg_income), 2) AS dept_avg_income,
+    ROUND(AVG(e.MonthlyIncome), 2) AS avg_income_of_leavers,
+    RANK() OVER (PARTITION BY e.Department ORDER BY COUNT(*) DESC) AS rank_within_dept
+FROM employees e
+JOIN (
+    SELECT Department, AVG(MonthlyIncome) AS avg_income
+    FROM employees
+    GROUP BY Department
+) AS dept_avg ON e.Department = dept_avg.Department
+WHERE e.AttritionValue = 1
+AND e.MonthlyIncome < dept_avg.avg_income
+GROUP BY e.Department, e.JobRole
+ORDER BY e.Department, rank_within_dept;
