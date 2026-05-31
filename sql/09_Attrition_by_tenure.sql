@@ -19,8 +19,8 @@ SELECT
         ELSE '10+ years' 
     END AS tenure_band,
     COUNT(*) AS total_employees,
-    SUM(CASE WHEN Attrition = 'Yes' THEN 1 ELSE 0 END) AS left_company,
-    ROUND(AVG(CASE WHEN Attrition = 'Yes' THEN 1.0 ELSE 0 END) * 100, 2) AS attrition_rate_by_tenure
+    SUM(AttritionValue) AS left_company,
+    ROUND(AVG(AttritionValue) * 100, 2) AS attrition_rate_by_tenure
 FROM employees
 GROUP BY tenure_band
 ORDER BY attrition_rate_by_tenure DESC;
