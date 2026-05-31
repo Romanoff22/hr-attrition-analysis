@@ -11,6 +11,8 @@ FROM employees
 GROUP BY Department
 ORDER BY attrition_rate_by_dept DESC;
 
+-- Filtering only departments that exceed the company average of 16.12%.It dynamically compares each department against the overall average without hardcoding the value.
+
 SELECT Department,
     ROUND(AVG(AttritionValue) * 100, 2) AS attrition_rate
 FROM employees
