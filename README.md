@@ -88,7 +88,7 @@ Using a CTE to flag employees with no promotion in 3+ years, job satisfaction of
 ### Excel Interactive Dashboard
 ![Excel Dashboard](excel/screenshot.png)
 
-*(Slicers: Gender, Department — filters all 6 visuals simultaneously)*
+*(Slicers: Gender, Department, BusinessTravel — filters all 6 visuals simultaneously)*
 
 ---
 
